@@ -25,8 +25,9 @@ function ToDoList() {
   function moveTaskUp(index) {
     if (index > 0) {
       const updatedTasks = [...tasks];
-      [updatedTasks[index],updatedTasks[index -1]] =
-      [updatedTasks[index -1]],[updatedTasks[index]];
+      const temp = updatedTasks[index - 1];
+      updatedTasks[index - 1] = updatedTasks[index];
+      updatedTasks[index] = temp;
       setTasks(updatedTasks);
       
     }
@@ -37,8 +38,9 @@ function ToDoList() {
     
     if (index < tasks.length -1) {
       const updatedTasks = [...tasks];
-      [updatedTasks[index],updatedTasks[index + 1]] =
-      [updatedTasks[index + 1]],[updatedTasks[index]];
+      const temp = updatedTasks[index + 1];
+      updatedTasks[index + 1] = updatedTasks[index];
+      updatedTasks[index] = temp;
       setTasks(updatedTasks);
       
     }
@@ -60,9 +62,9 @@ function ToDoList() {
           Add Task</button>
         </div>
 
-        <Ol>
+        <ol>
           {tasks.map((task, index) => 
-            <Li key={index}>
+            <li key={index}>
               <span className="text">{task}</span>
               <button 
                 className="delete-button"
@@ -82,9 +84,9 @@ function ToDoList() {
               >
                 Down
               </button>
-            </Li>
+            </li>
           )}
-        </Ol>
+        </ol>
       </div>
     );
   }
